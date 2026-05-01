@@ -1,0 +1,12 @@
+[
+  {
+    "id": "4d1f8f97-bc3a-4b6a-874f-c9a444269cfd",
+    "nome": "Gabriel",
+    "email": "gabriel@email.com",
+    "senha_hash": "123456",
+    "perfil": "admin",
+    "ativo": true,
+    "created_at": "2026-04-27T04:29:01.387Z",
+    "updated_at": "2026-04-27T04:29:01.388Z"
+  }
+]

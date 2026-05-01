@@ -1,0 +1,24 @@
+[
+  {
+    "id": "6e6a78d2-0731-4b44-bba5-eb53445e76ae",
+    "pedido_id": "123",
+    "tipo_roupa_id": "456",
+    "quantidade": 2,
+    "descricao": "Camisas sociais",
+    "status": "novo",
+    "valor_total": 30.5,
+    "created_at": "2026-04-27T04:32:13.024Z",
+    "updated_at": "2026-04-27T04:32:13.024Z"
+  },
+  {
+    "id": "9dc3158d-6fba-4647-95bd-0ca923596484",
+    "pedido_id": "123",
+    "tipo_roupa_id": "456",
+    "quantidade": 2,
+    "descricao": "Camisas sociais",
+    "status": "novo",
+    "valor_total": 30.5,
+    "created_at": "2026-05-01T20:46:07.374Z",
+    "updated_at": "2026-05-01T20:46:07.375Z"
+  }
+]

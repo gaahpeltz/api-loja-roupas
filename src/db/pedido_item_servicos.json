@@ -1,0 +1,22 @@
+[
+  {
+    "id": "0a9c16c2-3a91-4d31-8d37-5274ce947ae7",
+    "pedido_item_id": "123",
+    "servico_id": "456",
+    "preco_unitario": 10,
+    "quantidade": 2,
+    "valor_total": 20,
+    "created_at": "2026-04-27T04:32:34.619Z",
+    "updated_at": "2026-04-27T04:32:34.619Z"
+  },
+  {
+    "id": "04b414e3-0082-4afb-b191-5fe3cf254ad3",
+    "pedido_item_id": "123",
+    "servico_id": "456",
+    "preco_unitario": 10,
+    "quantidade": 2,
+    "valor_total": 20,
+    "created_at": "2026-04-27T21:07:24.947Z",
+    "updated_at": "2026-04-27T21:07:24.947Z"
+  }
+]

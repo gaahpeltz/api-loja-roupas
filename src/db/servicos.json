@@ -1,0 +1,30 @@
+[
+  {
+    "id": "09dc8cdc-6ab2-4ca5-8e7b-a55f982553bf",
+    "nome": "Lavagem",
+    "preco": 15.9,
+    "created_at": "2026-04-27T04:29:56.799Z",
+    "updated_at": "2026-04-27T04:29:56.799Z"
+  },
+  {
+    "id": "a7620457-46f7-4bd6-ba0f-66b5c4472f1e",
+    "nome": "Lavagem",
+    "preco": 15.9,
+    "created_at": "2026-04-27T04:33:41.762Z",
+    "updated_at": "2026-04-27T04:33:41.762Z"
+  },
+  {
+    "id": "6376fb24-6f35-401e-9003-2b784efd8a67",
+    "nome": "Lavagem",
+    "preco": 15.9,
+    "created_at": "2026-04-27T21:17:09.142Z",
+    "updated_at": "2026-04-27T21:17:09.142Z"
+  },
+  {
+    "id": "d0e645ad-4305-45fd-ba5d-1e4afdbe723a",
+    "nome": "Lavagem",
+    "preco": 15.9,
+    "created_at": "2026-04-27T23:06:41.713Z",
+    "updated_at": "2026-04-27T23:06:41.713Z"
+  }
+]
