@@ -36,6 +36,9 @@ const writeDB = (data) => {
  *   get:
  *     summary: Lista todos os pedidos
  *     tags: [Pedidos]
+ *     responses:
+ *       200:
+ *         description: Lista retornada
  */
 router.get('/', (req, res) => {
     res.json(readDB());
@@ -47,12 +50,23 @@ router.get('/', (req, res) => {
  *   get:
  *     summary: Busca pedido por ID
  *     tags: [Pedidos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Pedido encontrado
+ *       404:
+ *         description: Não encontrado
  */
 router.get('/:id', (req, res) => {
     const pedido = readDB().find(p => p.id === req.params.id);
 
     if (!pedido) {
-        return res.status(404).json({ erro: 'Pedido não encontrado' });
+        return res.status(404).json({ erro: 'Não encontrado' });
     }
 
     res.json(pedido);
@@ -64,6 +78,30 @@ router.get('/:id', (req, res) => {
  *   post:
  *     summary: Cria um novo pedido
  *     tags: [Pedidos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - cliente_id
+ *             properties:
+ *               cliente_id:
+ *                 type: string
+ *                 example: "123"
+ *               usuario_id:
+ *                 type: string
+ *                 example: "456"
+ *               data_prevista:
+ *                 type: string
+ *                 example: "2026-05-01"
+ *               observacoes:
+ *                 type: string
+ *                 example: "Pedido urgente"
+ *     responses:
+ *       201:
+ *         description: Pedido criado com sucesso
  */
 router.post('/', (req, res) => {
     const pedidos = readDB();
@@ -71,16 +109,7 @@ router.post('/', (req, res) => {
     const { cliente_id, usuario_id, data_prevista, observacoes } = req.body;
 
     if (!cliente_id) {
-        return res.status(400).json({
-            erro: 'cliente_id é obrigatório'
-        });
-    }
-
-    // valida data
-    if (data_prevista && isNaN(Date.parse(data_prevista))) {
-        return res.status(400).json({
-            erro: 'data_prevista inválida'
-        });
+        return res.status(400).json({ erro: 'cliente_id é obrigatório' });
     }
 
     const novo = {
@@ -109,46 +138,48 @@ router.post('/', (req, res) => {
  *   put:
  *     summary: Atualiza um pedido
  *     tags: [Pedidos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               cliente_id:
+ *                 type: string
+ *               usuario_id:
+ *                 type: string
+ *               status:
+ *                 type: string
+ *               data_prevista:
+ *                 type: string
+ *               data_saida:
+ *                 type: string
+ *               observacoes:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Atualizado
+ *       404:
+ *         description: Não encontrado
  */
 router.put('/:id', (req, res) => {
     const pedidos = readDB();
     const index = pedidos.findIndex(p => p.id === req.params.id);
 
     if (index === -1) {
-        return res.status(404).json({ erro: 'Pedido não encontrado' });
-    }
-
-    const {
-        cliente_id,
-        usuario_id,
-        status,
-        data_prevista,
-        data_saida,
-        observacoes
-    } = req.body;
-
-    const statusValidos = ['novo', 'em andamento', 'finalizado'];
-
-    if (status && !statusValidos.includes(status)) {
-        return res.status(400).json({
-            erro: 'Status inválido'
-        });
-    }
-
-    if (data_prevista && isNaN(Date.parse(data_prevista))) {
-        return res.status(400).json({
-            erro: 'data_prevista inválida'
-        });
+        return res.status(404).json({ erro: 'Não encontrado' });
     }
 
     pedidos[index] = {
         ...pedidos[index],
-        cliente_id: cliente_id || pedidos[index].cliente_id,
-        usuario_id: usuario_id ?? pedidos[index].usuario_id,
-        status: status || pedidos[index].status,
-        data_prevista: data_prevista ?? pedidos[index].data_prevista,
-        data_saida: data_saida ?? pedidos[index].data_saida,
-        observacoes: observacoes || pedidos[index].observacoes,
+        ...req.body,
         updated_at: new Date().toISOString()
     };
 
@@ -163,19 +194,23 @@ router.put('/:id', (req, res) => {
  *   delete:
  *     summary: Remove um pedido
  *     tags: [Pedidos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Removido
  */
 router.delete('/:id', (req, res) => {
     const pedidos = readDB();
-    const index = pedidos.findIndex(p => p.id === req.params.id);
+    const filtrado = pedidos.filter(p => p.id !== req.params.id);
 
-    if (index === -1) {
-        return res.status(404).json({ erro: 'Pedido não encontrado' });
-    }
+    writeDB(filtrado);
 
-    const removido = pedidos.splice(index, 1);
-    writeDB(pedidos);
-
-    res.json(removido[0]);
+    res.json({ mensagem: 'Removido com sucesso' });
 });
 
 module.exports = router;
