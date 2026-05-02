@@ -42,6 +42,14 @@ const writeDB = (data) =>
  *           type: string
  *         email:
  *           type: string
+ *         cpf_cnpj:
+ *           type: string
+ *         observacoes:
+ *           type: string
+ *         created_at:
+ *           type: string
+ *         updated_at:
+ *           type: string
  *
  *     ClienteCreate:
  *       type: object
@@ -54,6 +62,10 @@ const writeDB = (data) =>
  *         telefone:
  *           type: string
  *         email:
+ *           type: string
+ *         cpf_cnpj:
+ *           type: string
+ *         observacoes:
  *           type: string
  */
 
@@ -72,6 +84,35 @@ const writeDB = (data) =>
  */
 router.get('/', (req, res) => {
     res.json(readDB());
+});
+
+// =======================
+// GET BY NOME
+// =======================
+/**
+ * @swagger
+ * /clientes/nome/{nome}:
+ *   get:
+ *     summary: Busca cliente por nome
+ *     tags: [Clientes]
+ *     parameters:
+ *       - in: path
+ *         name: nome
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Clientes encontrados
+ */
+router.get('/nome/:nome', (req, res) => {
+    const nome = req.params.nome.toLowerCase();
+
+    const resultado = readDB().filter(cliente =>
+        cliente.nome.toLowerCase().includes(nome)
+    );
+
+    res.json(resultado);
 });
 
 // =======================
@@ -128,17 +169,16 @@ router.get('/:id', (req, res) => {
  */
 router.post('/', (req, res) => {
     const clientes = readDB();
-    const { nome, telefone, email } = req.body;
+    const { nome, telefone, email, cpf_cnpj, observacoes } = req.body;
 
-    // validação
     if (!nome || !email) {
         return res.status(400).json({
             erro: 'Nome e email são obrigatórios'
         });
     }
 
-    // valida duplicidade (email único)
     const existe = clientes.find(c => c.email === email);
+
     if (existe) {
         return res.status(400).json({
             erro: 'Email já cadastrado'
@@ -149,7 +189,11 @@ router.post('/', (req, res) => {
         id: uuidv4(),
         nome,
         telefone: telefone || '',
-        email
+        email,
+        cpf_cnpj: cpf_cnpj || '',
+        observacoes: observacoes || '',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
     };
 
     clientes.push(novo);
@@ -193,11 +237,11 @@ router.put('/:id', (req, res) => {
         return res.status(404).json({ erro: 'Cliente não encontrado' });
     }
 
-    const { nome, telefone, email } = req.body;
+    const { nome, telefone, email, cpf_cnpj, observacoes } = req.body;
 
-    // valida duplicidade ao atualizar
     if (email) {
         const existe = clientes.find(c => c.email === email && c.id !== req.params.id);
+
         if (existe) {
             return res.status(400).json({
                 erro: 'Email já cadastrado'
@@ -209,7 +253,10 @@ router.put('/:id', (req, res) => {
         ...clientes[index],
         nome: nome || clientes[index].nome,
         telefone: telefone || clientes[index].telefone,
-        email: email || clientes[index].email
+        email: email || clientes[index].email,
+        cpf_cnpj: cpf_cnpj || clientes[index].cpf_cnpj,
+        observacoes: observacoes || clientes[index].observacoes,
+        updated_at: new Date().toISOString()
     };
 
     writeDB(clientes);
