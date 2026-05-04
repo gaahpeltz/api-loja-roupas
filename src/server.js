@@ -20,7 +20,7 @@ const swaggerOptions = {
         info: {
             title: 'API Lavanderia',
             version: '1.0.0',
-            description: 'Documentação da API'
+            description: 'Documentação da API    equipe : Gabriel alexandre peltz , Pedro de Luca , Danieli Zererino Mota , Nicolas Darabas , Miguel Alexandre'
         },
         servers: [
             {

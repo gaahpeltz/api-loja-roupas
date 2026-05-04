@@ -1,12 +1,5 @@
 [
   {
-    "id": "09dc8cdc-6ab2-4ca5-8e7b-a55f982553bf",
-    "nome": "Lavagem",
-    "preco": 15.9,
-    "created_at": "2026-04-27T04:29:56.799Z",
-    "updated_at": "2026-04-27T04:29:56.799Z"
-  },
-  {
     "id": "a7620457-46f7-4bd6-ba0f-66b5c4472f1e",
     "nome": "Lavagem",
     "preco": 15.9,
@@ -33,5 +26,12 @@
     "preco": 15.9,
     "created_at": "2026-05-03T02:51:34.035Z",
     "updated_at": "2026-05-03T02:51:34.035Z"
+  },
+  {
+    "id": "0d7523bc-ec6f-4c06-a593-583325bb1f04",
+    "nome": "Lavagem234",
+    "preco": 15.9,
+    "created_at": "2026-05-04T22:35:47.442Z",
+    "updated_at": "2026-05-04T22:35:47.442Z"
   }
 ]

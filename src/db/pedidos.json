@@ -1,18 +1,5 @@
 [
   {
-    "id": "b96045cc-79bf-42ef-8940-95037f3df994",
-    "cliente_id": "123",
-    "usuario_id": "456",
-    "status": "novo",
-    "data_entrada": "2026-04-27T04:31:13.800Z",
-    "data_prevista": "2026-05-01",
-    "data_saida": null,
-    "valor_total": 0,
-    "observacoes": "Pedido urgente",
-    "created_at": "2026-04-27T04:31:13.800Z",
-    "updated_at": "2026-04-27T04:31:13.800Z"
-  },
-  {
     "id": "18fccbab-3fa5-4a0d-86e7-7a2b2a590563",
     "cliente_id": "123",
     "usuario_id": "456",

@@ -27,7 +27,7 @@ const writeDB = (data) => {
  * @swagger
  * tags:
  *   name: Tipos de Roupa
- *   description: API de Cadastro de Tipos de Roupa
+ *   description: API de Cadastro de Tipos de Roupa  DANIELI ZEREFINO MOTA
  */
 
 /**

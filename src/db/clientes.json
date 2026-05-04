@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "bfc6655a-007d-467f-80e7-50e5f3bfd58e",
+    "nome": "joao silva rosa",
+    "telefone": "48996141370",
+    "email": "string",
+    "cpf_cnpj": "string",
+    "observacoes": "string",
+    "created_at": "2026-05-04T22:27:26.442Z",
+    "updated_at": "2026-05-04T22:29:42.374Z"
+  }
+]

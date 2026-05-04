@@ -27,7 +27,7 @@ const writeDB = (data) => {
  * @swagger
  * tags:
  *   name: Pedidos
- *   description: Gestão de pedidos
+ *   description: Gestão de pedidos PEDRO DE LUCA
  */
 
 /**

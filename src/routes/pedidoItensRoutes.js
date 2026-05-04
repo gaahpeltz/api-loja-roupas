@@ -27,7 +27,7 @@ const writeDB = (data) => {
  * @swagger
  * tags:
  *   name: Pedido Itens
- *   description: Itens de um pedido
+ *   description: Itens de um pedido MIGUEL ALEXANDRE
  */
 
 /**

@@ -24,7 +24,7 @@ const writeDB = (data) =>
  * @swagger
  * tags:
  *   name: Clientes
- *   description: API de Clientes
+ *   description: API de Clientes GABRIEL ALEXANDRE PELTZ
  */
 
 /**

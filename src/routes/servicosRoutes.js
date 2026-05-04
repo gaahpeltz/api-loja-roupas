@@ -27,7 +27,7 @@ const writeDB = (data) => {
  * @swagger
  * tags:
  *   name: Serviços
- *   description: Gestão de serviços
+ *   description: Gestão de serviços NICOLAS DARABAS
  */
 
 /**
