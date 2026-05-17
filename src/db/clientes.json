@@ -8,5 +8,15 @@
     "observacoes": "string",
     "created_at": "2026-05-04T22:27:26.442Z",
     "updated_at": "2026-05-04T22:29:42.374Z"
+  },
+  {
+    "id": "4e354888-ca05-48e3-87ce-927f81a48878",
+    "nome": "Gabriel Peltz",
+    "telefone": "48999887766",
+    "email": "gabriel.peltz2@email.com",
+    "cpf_cnpj": "12345678900",
+    "observacoes": "Cliente teste MongoDB",
+    "created_at": "2026-05-17T19:50:54.412Z",
+    "updated_at": "2026-05-17T19:50:54.412Z"
   }
 ]

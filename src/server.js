@@ -3,6 +3,8 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
+const conectarBanco = require('./config/database');
+
 const app = express();
 
 // =======================
@@ -12,7 +14,12 @@ app.use(cors());
 app.use(express.json());
 
 // =======================
-// SWAGGER (VERSÃO SEGURA)
+// CONEXÃO COM MONGODB
+// =======================
+conectarBanco();
+
+// =======================
+// SWAGGER
 // =======================
 const swaggerOptions = {
     definition: {
@@ -20,7 +27,7 @@ const swaggerOptions = {
         info: {
             title: 'API Lavanderia',
             version: '1.0.0',
-            description: 'Documentação da API    equipe : Gabriel alexandre peltz , Pedro de Luca , Danieli Zererino Mota , Nicolas Darabas , Miguel Alexandre'
+            description: 'Documentação da API equipe: Gabriel Alexandre Peltz, Pedro de Luca, Danieli Zererino Mota, Nicolas Darabas, Miguel Alexandre'
         },
         servers: [
             {
@@ -41,6 +48,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.get('/', (req, res) => {
     res.json({
         status: 'API rodando 🚀',
+        banco: 'MongoDB conectado com Mongoose',
         docs: 'http://localhost:3000/api-docs'
     });
 });
